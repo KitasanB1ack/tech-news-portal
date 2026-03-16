@@ -61,7 +61,7 @@ tech-news-site/
 
 1. **克隆仓库**
 ```bash
-git clone https://github.com/YOUR_USERNAME/tech-news-portal.git
+git clone https://github.com/KitasanB1ack/tech-news-portal.git
 cd tech-news-portal
 ```
 
@@ -208,7 +208,7 @@ MIT License
 ## 📞 联系方式
 
 - 邮箱: 1149783590@qq.com
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
+- GitHub: [@YOUR_USERNAME](https://github.com/KitasanB1ack)
 
 ---
 
