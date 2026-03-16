@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>API 测试 - 直连</title>
+</head>
+<body>
+  <h1>API 连接测试 (直接连接 8081)</h1>
+  <button onclick="testDirectAPI()">测试直连 API (8081)</button>
+  <button onclick="testProxyAPI()">测试代理 API (/api)</button>
+  <pre id="result"></pre>
+
+  <script>
+    async function testDirectAPI() {
+      const result = document.getElementById('result');
+      result.textContent = '请求中... (直连 http://localhost:8081/api/news)';
+      
+      try {
+        const response = await fetch('http://localhost:8081/api/news');
+        const data = await response.json();
+        result.textContent = '✅ 成功!\n\n' + JSON.stringify(data, null, 2).substring(0, 1000);
+      } catch (error) {
+        result.textContent = '❌ 错误: ' + error.message;
+      }
+    }
+    
+    async function testProxyAPI() {
+      const result = document.getElementById('result');
+      result.textContent = '请求中... (通过代理 /api/news)';
+      
+      try {
+        const response = await fetch('/api/news');
+        const data = await response.json();
+        result.textContent = '✅ 成功!\n\n' + JSON.stringify(data, null, 2).substring(0, 1000);
+      } catch (error) {
+        result.textContent = '❌ 错误: ' + error.message;
+      }
+    }
+    
+    // 页面加载时自动测试直连
+    window.onload = testDirectAPI;
+  </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>API 测试</title>
+</head>
+<body>
+  <h1>API 连接测试</h1>
+  <button onclick="testAPI()">测试 API</button>
+  <pre id="result"></pre>
+
+  <script>
+    async function testAPI() {
+      const result = document.getElementById('result');
+      result.textContent = '请求中...';
+      
+      try {
+        // 测试通过代理访问
+        const response = await fetch('/api/news');
+        const data = await response.json();
+        result.textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        result.textContent = '错误: ' + error.message;
+      }
+    }
+    
+    // 页面加载时自动测试
+    window.onload = testAPI;
+  </script>
+</body>
+</html>
